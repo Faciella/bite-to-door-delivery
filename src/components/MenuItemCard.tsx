@@ -41,7 +41,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
           {item.description}
         </p>
         <div className="flex justify-between items-center mt-2">
-          <span className="font-bold">{formatPrice(item.price)}</span>
+          <span className="font-bold">{formatPrice(item.price)} FCFA</span>
           <Button
             size="sm"
             className="text-white bg-orange-500 hover:bg-orange-600"
