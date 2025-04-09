@@ -19,10 +19,11 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
   };
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat("en-US", {
+    return new Intl.NumberFormat("fr-FR", {
       style: "currency",
-      currency: "USD",
-    }).format(price);
+      currency: "XOF",
+      currencyDisplay: "symbol",
+    }).format(price).replace(/\s/g, ' ');
   };
 
   return (
