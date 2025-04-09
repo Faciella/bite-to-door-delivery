@@ -29,13 +29,14 @@ const Checkout = () => {
   };
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat("en-US", {
+    return new Intl.NumberFormat("fr-FR", {
       style: "currency",
-      currency: "USD",
-    }).format(price);
+      currency: "XOF",
+      currencyDisplay: "symbol",
+    }).format(price).replace(/\s/g, ' ');
   };
 
-  const deliveryFee = 2.99;
+  const deliveryFee = 500;
   const tax = subtotal * 0.08;
   const total = subtotal + deliveryFee + tax;
 
@@ -97,7 +98,7 @@ const Checkout = () => {
             {/* Cart Summary */}
             <div className="lg:col-span-2">
               <div className="bg-white p-6 rounded-lg shadow-sm mb-6">
-                <h2 className="text-xl font-bold mb-4">Your Order</h2>
+                <h2 className="text-xl font-bold mb-4">Your Order from Fatou's Place</h2>
                 
                 {items.length === 0 ? (
                   <div className="text-center py-8">
@@ -122,7 +123,7 @@ const Checkout = () => {
                             />
                             <div>
                               <h3 className="font-medium">{item.name}</h3>
-                              <p className="text-sm text-muted-foreground">{formatPrice(item.price)}</p>
+                              <p className="text-sm text-muted-foreground">{formatPrice(item.price)} FCFA</p>
                               <div className="flex items-center mt-2">
                                 <Button
                                   type="button"
@@ -149,7 +150,7 @@ const Checkout = () => {
                           </div>
                           <div className="flex flex-col items-end">
                             <span className="font-medium">
-                              {formatPrice(item.price * item.quantity)}
+                              {formatPrice(item.price * item.quantity)} FCFA
                             </span>
                             <Button
                               size="icon"
@@ -292,24 +293,24 @@ const Checkout = () => {
                 <div className="space-y-3 mb-6">
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Subtotal</span>
-                    <span>{formatPrice(subtotal)}</span>
+                    <span>{formatPrice(subtotal)} FCFA</span>
                   </div>
                   
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Delivery Fee</span>
-                    <span>{formatPrice(deliveryFee)}</span>
+                    <span>{formatPrice(deliveryFee)} FCFA</span>
                   </div>
                   
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Tax</span>
-                    <span>{formatPrice(tax)}</span>
+                    <span>{formatPrice(tax)} FCFA</span>
                   </div>
                   
                   <div className="h-px bg-gray-200 my-2"></div>
                   
                   <div className="flex justify-between font-bold">
                     <span>Total</span>
-                    <span>{formatPrice(total)}</span>
+                    <span>{formatPrice(total)} FCFA</span>
                   </div>
                 </div>
                 
