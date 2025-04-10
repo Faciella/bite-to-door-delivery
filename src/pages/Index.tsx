@@ -13,72 +13,72 @@ import { Search, ChevronRight, ArrowRight } from "lucide-react";
 const featuredRestaurants: Restaurant[] = [
   {
     id: "1",
-    name: "Burger Palace",
+    name: "Fatou's Place",
     imageUrl: "https://images.unsplash.com/photo-1586816001966-79b736744398?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGZhc3QlMjBmb29kJTIwcmVzdGF1cmFudHxlbnwwfHwwfHx8MA%3D%3D",
-    cuisine: "American, Burgers",
+    cuisine: "Sénégalais, Thiebou Djeune",
     rating: 4.8,
     deliveryTime: "25-35 min",
-    deliveryFee: "$2.99",
+    deliveryFee: "500 FCFA",
   },
   {
     id: "2",
-    name: "Pizza Heaven",
+    name: "Dakar Pizza",
     imageUrl: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGl6emF8ZW58MHx8MHx8fDA%3D",
-    cuisine: "Italian, Pizza",
+    cuisine: "Italien, Pizza",
     rating: 4.6,
     deliveryTime: "30-40 min",
-    deliveryFee: "$1.99",
+    deliveryFee: "400 FCFA",
   },
   {
     id: "3",
-    name: "Sushi Express",
+    name: "Plateau Sushi",
     imageUrl: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3VzaGl8ZW58MHx8MHx8fDA%3D",
-    cuisine: "Japanese, Sushi",
+    cuisine: "Japonais, Sushi",
     rating: 4.9,
     deliveryTime: "35-45 min",
-    deliveryFee: "$3.99",
+    deliveryFee: "800 FCFA",
   },
 ];
 
 const popularRestaurants: Restaurant[] = [
   {
     id: "4",
-    name: "Taco Fiesta",
+    name: "Yassa & Co",
     imageUrl: "https://images.unsplash.com/photo-1551504734-5ee1c4a3479b?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGFjb3N8ZW58MHx8MHx8fDA%3D",
-    cuisine: "Mexican, Tacos",
+    cuisine: "Sénégalais, Yassa",
     rating: 4.7,
     deliveryTime: "20-30 min",
-    deliveryFee: "$2.49",
+    deliveryFee: "300 FCFA",
   },
   {
     id: "5",
-    name: "Noodle House",
+    name: "Almadies Noodles",
     imageUrl: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bm9vZGxlc3xlbnwwfHwwfHx8MA%3D%3D",
-    cuisine: "Asian, Noodles",
+    cuisine: "Asiatique, Nouilles",
     rating: 4.5,
     deliveryTime: "25-35 min",
-    deliveryFee: "$2.99",
+    deliveryFee: "600 FCFA",
   },
   {
     id: "6",
-    name: "Healthy Greens",
+    name: "Salade Dakaroise",
     imageUrl: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2FsYWR8ZW58MHx8MHx8fDA%3D",
-    cuisine: "Health, Salads",
+    cuisine: "Santé, Salades",
     rating: 4.4,
     deliveryTime: "15-25 min",
-    deliveryFee: "$1.99",
+    deliveryFee: "400 FCFA",
   },
 ];
 
 const cuisines = [
-  { name: "Burgers", icon: "🍔" },
+  { name: "Thiebou Djeune", icon: "🍚" },
   { name: "Pizza", icon: "🍕" },
   { name: "Sushi", icon: "🍣" },
-  { name: "Tacos", icon: "🌮" },
-  { name: "Pasta", icon: "🍝" },
-  { name: "Salads", icon: "🥗" },
-  { name: "Dessert", icon: "🍰" },
-  { name: "Drinks", icon: "🥤" },
+  { name: "Yassa", icon: "🍗" },
+  { name: "Mafé", icon: "🥘" },
+  { name: "Salades", icon: "🥗" },
+  { name: "Desserts", icon: "🍰" },
+  { name: "Jus Bissap", icon: "🥤" },
 ];
 
 const Index = () => {
@@ -99,16 +99,16 @@ const Index = () => {
         <div className="container mx-auto px-4 py-12 md:py-24">
           <div className="max-w-2xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-              Food delivery to your doorstep
+              Livraison de repas à votre porte
             </h1>
             <p className="text-lg md:text-xl opacity-90 mb-8">
-              Choose from hundreds of restaurants and get your favorite meal delivered fast
+              Choisissez parmi des centaines de restaurants et recevez votre repas préféré rapidement
             </p>
             
             <form onSubmit={handleSearch} className="relative max-w-md">
               <Input
                 type="text"
-                placeholder="Enter your delivery address"
+                placeholder="Entrez votre adresse de livraison"
                 className="pl-10 pr-24 py-6 w-full text-black"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -118,7 +118,7 @@ const Index = () => {
                 type="submit"
                 className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-orange-600 hover:bg-orange-700"
               >
-                Find Food
+                Trouver
               </Button>
             </form>
           </div>
@@ -145,9 +145,9 @@ const Index = () => {
       <section className="py-12">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold">Browse by Cuisine</h2>
+            <h2 className="text-2xl md:text-3xl font-bold">Parcourir par cuisine</h2>
             <Link to="/restaurants" className="text-orange-500 hover:text-orange-600 flex items-center">
-              <span className="mr-1">View all</span>
+              <span className="mr-1">Voir tout</span>
               <ChevronRight className="w-4 h-4" />
             </Link>
           </div>
@@ -171,9 +171,9 @@ const Index = () => {
       <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold">Featured Restaurants</h2>
+            <h2 className="text-2xl md:text-3xl font-bold">Restaurants en vedette</h2>
             <Link to="/restaurants" className="text-orange-500 hover:text-orange-600 flex items-center">
-              <span className="mr-1">View all</span>
+              <span className="mr-1">Voir tout</span>
               <ChevronRight className="w-4 h-4" />
             </Link>
           </div>
@@ -190,9 +190,9 @@ const Index = () => {
       <section className="py-12">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold">Popular Near You</h2>
+            <h2 className="text-2xl md:text-3xl font-bold">Populaire près de vous</h2>
             <Link to="/restaurants" className="text-orange-500 hover:text-orange-600 flex items-center">
-              <span className="mr-1">View all</span>
+              <span className="mr-1">Voir tout</span>
               <ChevronRight className="w-4 h-4" />
             </Link>
           </div>
@@ -209,9 +209,9 @@ const Index = () => {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">How It Works</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Comment ça marche</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Getting your favorite food delivered to your doorstep is easier than ever
+              Recevoir vos plats préférés à votre porte est plus facile que jamais
             </p>
           </div>
           
@@ -220,9 +220,9 @@ const Index = () => {
               <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🔍</span>
               </div>
-              <h3 className="text-xl font-bold mb-2">Browse Restaurants</h3>
+              <h3 className="text-xl font-bold mb-2">Parcourir les restaurants</h3>
               <p className="text-muted-foreground">
-                Find your favorite restaurants or discover new places to eat
+                Trouvez vos restaurants préférés ou découvrez de nouveaux endroits
               </p>
             </div>
             
@@ -230,9 +230,9 @@ const Index = () => {
               <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🛒</span>
               </div>
-              <h3 className="text-xl font-bold mb-2">Place Your Order</h3>
+              <h3 className="text-xl font-bold mb-2">Passer votre commande</h3>
               <p className="text-muted-foreground">
-                Choose the items you want and add them to your cart
+                Choisissez les plats que vous voulez et ajoutez-les à votre panier
               </p>
             </div>
             
@@ -240,9 +240,9 @@ const Index = () => {
               <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🚚</span>
               </div>
-              <h3 className="text-xl font-bold mb-2">Fast Delivery</h3>
+              <h3 className="text-xl font-bold mb-2">Livraison rapide</h3>
               <p className="text-muted-foreground">
-                Get your food delivered to your door in minutes
+                Recevez votre nourriture livrée à votre porte en quelques minutes
               </p>
             </div>
           </div>
@@ -254,9 +254,9 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="mb-6 md:mb-0">
-              <h2 className="text-3xl md:text-4xl font-bold mb-2">Download our app</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-2">Téléchargez notre application</h2>
               <p className="text-lg opacity-90">
-                Get the full experience on your phone
+                Profitez de l'expérience complète sur votre téléphone
               </p>
             </div>
             
