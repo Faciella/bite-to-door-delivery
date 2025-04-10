@@ -68,13 +68,31 @@ const Checkout = () => {
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1500));
       
+      // Generate order details for receipt
+      const orderDetails = {
+        orderNumber: `ORD-${Math.floor(100000 + Math.random() * 900000)}`,
+        orderDate: new Date().toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        }),
+        items: [...items],
+        deliveryAddress,
+        subtotal,
+        deliveryFee,
+        tax,
+        total
+      };
+      
       toast({
         title: "Order placed successfully!",
         description: "Your food is being prepared and will be delivered soon.",
       });
       
       clearCart();
-      navigate("/");
+      
+      // Navigate to order confirmation page with order details
+      navigate("/order-confirmation", { state: { orderDetails } });
     } catch (error) {
       toast({
         title: "Error",
