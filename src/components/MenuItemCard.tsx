@@ -19,7 +19,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
   };
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat("fr-FR", {
+    return new Intl.NumberFormat("en-US", {
       style: "currency",
       currency: "XOF",
       currencyDisplay: "symbol",
@@ -47,7 +47,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
             className="text-white bg-orange-500 hover:bg-orange-600"
             onClick={handleAddToCart}
           >
-            <PlusCircle className="w-4 h-4 mr-2" /> Ajouter
+            <PlusCircle className="w-4 h-4 mr-2" /> Add
           </Button>
         </div>
       </div>

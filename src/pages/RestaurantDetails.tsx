@@ -30,7 +30,7 @@ const RestaurantDetails = () => {
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <div className="flex-grow flex items-center justify-center">
-          <p>Chargement des détails du restaurant...</p>
+          <p>Loading restaurant details...</p>
         </div>
         <Footer />
       </div>
@@ -42,7 +42,7 @@ const RestaurantDetails = () => {
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <div className="flex-grow flex items-center justify-center">
-          <p>Restaurant introuvable</p>
+          <p>Restaurant not found</p>
         </div>
         <Footer />
       </div>
@@ -62,7 +62,7 @@ const RestaurantDetails = () => {
         <Tabs defaultValue="menu" className="mb-8">
           <TabsList className="mb-6">
             <TabsTrigger value="menu">Menu</TabsTrigger>
-            <TabsTrigger value="info">Informations</TabsTrigger>
+            <TabsTrigger value="info">Information</TabsTrigger>
           </TabsList>
           
           <TabsContent value="menu">

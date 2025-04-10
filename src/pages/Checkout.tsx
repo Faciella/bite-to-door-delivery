@@ -29,7 +29,7 @@ const Checkout = () => {
   };
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat("fr-FR", {
+    return new Intl.NumberFormat("en-US", {
       style: "currency",
       currency: "XOF",
       currencyDisplay: "symbol",
@@ -45,8 +45,8 @@ const Checkout = () => {
     const { street, city, state, zipCode } = deliveryAddress;
     if (!street || !city || !state || !zipCode) {
       toast({
-        title: "Informations manquantes",
-        description: "Veuillez remplir tous les champs d'adresse de livraison",
+        title: "Missing Information",
+        description: "Please fill in all delivery address fields",
         variant: "destructive",
       });
       return;
@@ -55,8 +55,8 @@ const Checkout = () => {
     // Validate cart items
     if (items.length === 0) {
       toast({
-        title: "Panier vide",
-        description: "Votre panier est vide. Ajoutez des articles avant de passer à la caisse.",
+        title: "Empty Cart",
+        description: "Your cart is empty. Add items before checkout.",
         variant: "destructive",
       });
       return;
@@ -70,8 +70,8 @@ const Checkout = () => {
       
       // Generate order details for receipt
       const orderDetails = {
-        orderNumber: `CMD-${Math.floor(100000 + Math.random() * 900000)}`,
-        orderDate: new Date().toLocaleDateString('fr-FR', {
+        orderNumber: `ORD-${Math.floor(100000 + Math.random() * 900000)}`,
+        orderDate: new Date().toLocaleDateString('en-US', {
           year: 'numeric',
           month: 'long',
           day: 'numeric',
@@ -85,8 +85,8 @@ const Checkout = () => {
       };
       
       toast({
-        title: "Commande passée avec succès!",
-        description: "Votre repas est en préparation et sera livré bientôt.",
+        title: "Order placed successfully!",
+        description: "Your food is being prepared and will be delivered soon.",
       });
       
       clearCart();
@@ -95,8 +95,8 @@ const Checkout = () => {
       navigate("/order-confirmation", { state: { orderDetails } });
     } catch (error) {
       toast({
-        title: "Erreur",
-        description: "Un problème est survenu lors de la commande. Veuillez réessayer.",
+        title: "Error",
+        description: "There was a problem with your order. Please try again.",
         variant: "destructive",
       });
     } finally {
@@ -110,22 +110,22 @@ const Checkout = () => {
       
       <div className="flex-grow bg-gray-50 py-8 md:py-12">
         <div className="container mx-auto px-4">
-          <h1 className="text-3xl font-bold mb-8">Paiement</h1>
+          <h1 className="text-3xl font-bold mb-8">Checkout</h1>
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Cart Summary */}
             <div className="lg:col-span-2">
               <div className="bg-white p-6 rounded-lg shadow-sm mb-6">
-                <h2 className="text-xl font-bold mb-4">Votre commande chez Fatou's Place</h2>
+                <h2 className="text-xl font-bold mb-4">Your Order from Fatou's Place</h2>
                 
                 {items.length === 0 ? (
                   <div className="text-center py-8">
-                    <p className="text-muted-foreground mb-4">Votre panier est vide</p>
+                    <p className="text-muted-foreground mb-4">Your cart is empty</p>
                     <Button 
                       onClick={() => navigate("/")}
                       variant="outline"
                     >
-                      Parcourir les restaurants
+                      Browse Restaurants
                     </Button>
                   </div>
                 ) : (
@@ -188,7 +188,7 @@ const Checkout = () => {
                         variant="outline"
                         onClick={clearCart}
                       >
-                        Vider le panier
+                        Clear Cart
                       </Button>
                     </div>
                   </>
@@ -197,16 +197,16 @@ const Checkout = () => {
               
               {/* Delivery Address */}
               <div className="bg-white p-6 rounded-lg shadow-sm">
-                <h2 className="text-xl font-bold mb-4">Adresse de livraison</h2>
+                <h2 className="text-xl font-bold mb-4">Delivery Address</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2 md:col-span-2">
-                    <Label htmlFor="street">Adresse</Label>
+                    <Label htmlFor="street">Address</Label>
                     <div className="relative">
                       <MapPin className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                       <Input
                         id="street"
                         name="street"
-                        placeholder="123 Rue Principale"
+                        placeholder="123 Main Street"
                         className="pl-9"
                         value={deliveryAddress.street}
                         onChange={handleAddressChange}
@@ -215,7 +215,7 @@ const Checkout = () => {
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="city">Ville</Label>
+                    <Label htmlFor="city">City</Label>
                     <Input
                       id="city"
                       name="city"
@@ -226,7 +226,7 @@ const Checkout = () => {
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="state">Région</Label>
+                    <Label htmlFor="state">Region</Label>
                     <Input
                       id="state"
                       name="state"
@@ -237,7 +237,7 @@ const Checkout = () => {
                   </div>
                   
                   <div className="space-y-2 md:col-span-2">
-                    <Label htmlFor="zipCode">Code postal</Label>
+                    <Label htmlFor="zipCode">Postal Code</Label>
                     <Input
                       id="zipCode"
                       name="zipCode"
@@ -253,20 +253,20 @@ const Checkout = () => {
             {/* Payment & Order Summary */}
             <div>
               <div className="bg-white p-6 rounded-lg shadow-sm mb-6">
-                <h2 className="text-xl font-bold mb-4">Méthode de paiement</h2>
+                <h2 className="text-xl font-bold mb-4">Payment Method</h2>
                 <Tabs 
                   defaultValue={paymentMethod} 
                   onValueChange={(value) => setPaymentMethod(value)}
                 >
                   <TabsList className="grid grid-cols-2 mb-4">
-                    <TabsTrigger value="card">Carte</TabsTrigger>
-                    <TabsTrigger value="cash">Espèces</TabsTrigger>
+                    <TabsTrigger value="card">Card</TabsTrigger>
+                    <TabsTrigger value="cash">Cash</TabsTrigger>
                   </TabsList>
                   
                   <TabsContent value="card">
                     <div className="space-y-4">
                       <div className="space-y-2">
-                        <Label htmlFor="cardNumber">Numéro de carte</Label>
+                        <Label htmlFor="cardNumber">Card Number</Label>
                         <div className="relative">
                           <CreditCard className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                           <Input
@@ -279,8 +279,8 @@ const Checkout = () => {
                       
                       <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
-                          <Label htmlFor="expiry">Date d'expiration</Label>
-                          <Input id="expiry" placeholder="MM/AA" />
+                          <Label htmlFor="expiry">Expiry Date</Label>
+                          <Input id="expiry" placeholder="MM/YY" />
                         </div>
                         
                         <div className="space-y-2">
@@ -290,7 +290,7 @@ const Checkout = () => {
                       </div>
                       
                       <div className="space-y-2">
-                        <Label htmlFor="nameOnCard">Nom sur la carte</Label>
+                        <Label htmlFor="nameOnCard">Name on Card</Label>
                         <Input id="nameOnCard" placeholder="John Doe" />
                       </div>
                     </div>
@@ -298,29 +298,29 @@ const Checkout = () => {
                   
                   <TabsContent value="cash">
                     <div className="py-6 text-center text-muted-foreground">
-                      <p>Vous paierez en espèces à la livraison de votre commande.</p>
-                      <p className="mt-2">Veuillez préparer le montant exact.</p>
+                      <p>You will pay in cash when your order is delivered.</p>
+                      <p className="mt-2">Please prepare the exact amount.</p>
                     </div>
                   </TabsContent>
                 </Tabs>
               </div>
               
               <div className="bg-white p-6 rounded-lg shadow-sm">
-                <h2 className="text-xl font-bold mb-4">Résumé de commande</h2>
+                <h2 className="text-xl font-bold mb-4">Order Summary</h2>
                 
                 <div className="space-y-3 mb-6">
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">Sous-total</span>
+                    <span className="text-muted-foreground">Subtotal</span>
                     <span>{formatPrice(subtotal)} FCFA</span>
                   </div>
                   
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">Frais de livraison</span>
+                    <span className="text-muted-foreground">Delivery Fee</span>
                     <span>{formatPrice(deliveryFee)} FCFA</span>
                   </div>
                   
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">Taxe</span>
+                    <span className="text-muted-foreground">Tax</span>
                     <span>{formatPrice(tax)} FCFA</span>
                   </div>
                   
@@ -337,7 +337,7 @@ const Checkout = () => {
                   className="w-full bg-orange-500 hover:bg-orange-600"
                   disabled={items.length === 0 || isSubmitting}
                 >
-                  {isSubmitting ? "Traitement..." : "Passer la commande"}
+                  {isSubmitting ? "Processing..." : "Place Order"}
                 </Button>
               </div>
             </div>

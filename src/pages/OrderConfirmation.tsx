@@ -24,7 +24,7 @@ const OrderConfirmation = () => {
   }, [location, navigate]);
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat("fr-FR", {
+    return new Intl.NumberFormat("en-US", {
       style: "currency",
       currency: "XOF",
       currencyDisplay: "symbol",
@@ -41,7 +41,7 @@ const OrderConfirmation = () => {
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <div className="flex-grow flex items-center justify-center">
-          <p>Chargement des détails de la commande...</p>
+          <p>Loading order details...</p>
         </div>
         <Footer />
       </div>
@@ -61,11 +61,11 @@ const OrderConfirmation = () => {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <Receipt className="h-6 w-6 text-orange-500" />
-                  <CardTitle className="text-2xl">Confirmation de Commande</CardTitle>
+                  <CardTitle className="text-2xl">Order Confirmation</CardTitle>
                 </div>
                 <Button variant="outline" size="sm" onClick={handlePrint} className="print:hidden">
                   <Printer className="h-4 w-4 mr-2" />
-                  Imprimer le reçu
+                  Print Receipt
                 </Button>
               </div>
             </CardHeader>
@@ -73,7 +73,7 @@ const OrderConfirmation = () => {
             <CardContent className="pt-6">
               <div className="flex justify-between mb-6">
                 <div>
-                  <p className="text-sm text-muted-foreground">Numéro de commande</p>
+                  <p className="text-sm text-muted-foreground">Order Number</p>
                   <p className="font-medium">{orderNumber}</p>
                 </div>
                 <div>
@@ -83,20 +83,20 @@ const OrderConfirmation = () => {
               </div>
               
               <div className="mb-6">
-                <p className="text-sm font-medium mb-2">Adresse de livraison</p>
+                <p className="text-sm font-medium mb-2">Delivery Address</p>
                 <p className="text-sm text-muted-foreground">
                   {deliveryAddress.street}, {deliveryAddress.city}, {deliveryAddress.state} {deliveryAddress.zipCode}
                 </p>
               </div>
               
               <div className="mb-6">
-                <p className="text-sm font-medium mb-2">Résumé de la commande</p>
+                <p className="text-sm font-medium mb-2">Order Summary</p>
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead>Article</TableHead>
-                      <TableHead className="text-center">Qté</TableHead>
-                      <TableHead className="text-right">Prix</TableHead>
+                      <TableHead>Item</TableHead>
+                      <TableHead className="text-center">Qty</TableHead>
+                      <TableHead className="text-right">Price</TableHead>
                       <TableHead className="text-right">Total</TableHead>
                     </TableRow>
                   </TableHeader>
@@ -112,15 +112,15 @@ const OrderConfirmation = () => {
                   </TableBody>
                   <TableFooter>
                     <TableRow>
-                      <TableCell colSpan={3}>Sous-total</TableCell>
+                      <TableCell colSpan={3}>Subtotal</TableCell>
                       <TableCell className="text-right">{formatPrice(subtotal)} FCFA</TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell colSpan={3}>Frais de livraison</TableCell>
+                      <TableCell colSpan={3}>Delivery Fee</TableCell>
                       <TableCell className="text-right">{formatPrice(deliveryFee)} FCFA</TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell colSpan={3}>Taxe</TableCell>
+                      <TableCell colSpan={3}>Tax</TableCell>
                       <TableCell className="text-right">{formatPrice(tax)} FCFA</TableCell>
                     </TableRow>
                     <TableRow>
@@ -134,14 +134,14 @@ const OrderConfirmation = () => {
             
             <CardFooter className="border-t pt-6 flex-col items-start gap-4">
               <p className="text-center w-full text-muted-foreground">
-                Merci pour votre commande chez Fatou's Place !
+                Thank you for your order at Fatou's Place!
               </p>
               <Button 
                 className="mx-auto bg-orange-500 hover:bg-orange-600"
                 onClick={() => navigate("/")}
               >
                 <Home className="h-4 w-4 mr-2" />
-                Retour à l'accueil
+                Return to Home
               </Button>
             </CardFooter>
           </Card>
