@@ -13,7 +13,7 @@ import { Search, ChevronRight, ArrowRight } from "lucide-react";
 const featuredRestaurants: Restaurant[] = [
   {
     id: "1",
-    name: "Fatou's Place",
+    name: "Chez Fatou",
     imageUrl: "https://images.unsplash.com/photo-1586816001966-79b736744398?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGZhc3QlMjBmb29kJTIwcmVzdGF1cmFudHxlbnwwfHwwfHx8MA%3D%3D",
     cuisine: "Sénégalais, Thiebou Djeune",
     rating: 4.8,
@@ -86,7 +86,7 @@ const Index = () => {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(`Searching for: ${searchQuery}`);
+    console.log(`Recherche pour: ${searchQuery}`);
     // In a real app, this would trigger a search and navigate to results
   };
 

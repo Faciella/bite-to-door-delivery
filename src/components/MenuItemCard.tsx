@@ -47,7 +47,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
             className="text-white bg-orange-500 hover:bg-orange-600"
             onClick={handleAddToCart}
           >
-            <PlusCircle className="w-4 h-4 mr-2" /> Add
+            <PlusCircle className="w-4 h-4 mr-2" /> Ajouter
           </Button>
         </div>
       </div>
